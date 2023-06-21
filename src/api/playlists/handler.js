@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
 const ClientError = require('../../exceptions/ClientError');
 
 class PlaylistsHandler {
@@ -11,21 +13,21 @@ class PlaylistsHandler {
   }
 
   async postPlaylistHandler(request, h) {
-      this._validator.validatePlaylistPayload(request.payload);
-      const { name } = request.payload;
-      const { id: credentialId } = request.auth.credentials;
+    this._validator.validatePlaylistPayload(request.payload);
+    const { name } = request.payload;
+    const { id: credentialId } = request.auth.credentials;
 
-      const playlistId = await this._service.addPlaylist({ name, owner: credentialId });
+    const playlistId = await this._service.addPlaylist({ name, owner: credentialId });
 
-      const response = h.response({
-        status: 'success',
-        message: 'Playlist ditambahkan',
-        data: {
-          playlistId,
-        },
-      });
-      response.code(201);
-      return response;
+    const response = h.response({
+      status: 'success',
+      message: 'Playlist ditambahkan',
+      data: {
+        playlistId,
+      },
+    });
+    response.code(201);
+    return response;
   }
 
   async getPlaylistsHandler(request) {
@@ -40,16 +42,16 @@ class PlaylistsHandler {
   }
 
   async deletePlaylistByIdHandler(request, h) {
-      const { id } = request.params;
-      const { id: credentialId } = request.auth.credentials;
+    const { id } = request.params;
+    const { id: credentialId } = request.auth.credentials;
 
-      await this._service.verifyPlaylistOwner(id, credentialId);
-      await this._service.deletePlaylistById(id);
+    await this._service.verifyPlaylistOwner(id, credentialId);
+    await this._service.deletePlaylistById(id);
 
-      return {
-        status: 'success',
-        message: 'Playlist dihapus',
-      };
+    return {
+      status: 'success',
+      message: 'Playlist dihapus',
+    };
   }
 }
 
