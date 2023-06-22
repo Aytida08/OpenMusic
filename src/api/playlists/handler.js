@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-underscore-dangle */
-const ClientError = require('../../exceptions/ClientError');
-
 class PlaylistsHandler {
   constructor(service, validator) {
     this._service = service;
@@ -21,7 +17,7 @@ class PlaylistsHandler {
 
     const response = h.response({
       status: 'success',
-      message: 'Playlist ditambahkan',
+      message: 'Playlist ditambah',
       data: {
         playlistId,
       },
@@ -41,7 +37,7 @@ class PlaylistsHandler {
     };
   }
 
-  async deletePlaylistByIdHandler(request, h) {
+  async deletePlaylistByIdHandler(request) {
     const { id } = request.params;
     const { id: credentialId } = request.auth.credentials;
 

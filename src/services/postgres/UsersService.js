@@ -22,7 +22,7 @@ class UsersService {
       const result = await this._pool.query(query);
   
       if (!result.rowCount) {
-        throw new InvariantError('Gagal menambah pengguna');
+        throw new InvariantError('Gagal tambah pengguna');
       }
   
       return result.rows[0].id;
@@ -37,7 +37,7 @@ class UsersService {
       const result = await this._pool.query(query);
   
       if (result.rowCount > 0) {
-        throw new InvariantError('Gagal menambah pengguna, nama pengguna sudah digunakan');
+        throw new InvariantError('Gagal tambah pengguna, nama sudah dipakai');
       }
     }
   
@@ -50,7 +50,7 @@ class UsersService {
       const result = await this._pool.query(query);
   
       if (!result.rowCount) {
-        throw new NotFoundError('pengguna tidak ditemukan');
+        throw new NotFoundError('pengguna tidak ketemu');
       }
   
       return result.rows[0];
@@ -65,7 +65,7 @@ class UsersService {
       const result = await this._pool.query(query);
   
       if (!result.rowCount) {
-        throw new AuthenticationError('pengguna tidak ditemukan');
+        throw new AuthenticationError('pengguna tidak ketemu');
       }
   
       const {id, password: hashedPassword} = result.rows[0];
@@ -73,7 +73,7 @@ class UsersService {
       const match = await bcrypt.compare(password, hashedPassword);
   
       if (!match) {
-        throw new AuthenticationError('Kredensial yang Anda berikan salah');
+        throw new AuthenticationError('Kredensial salah');
       }
   
       return id;

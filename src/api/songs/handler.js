@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-underscore-dangle */
-const ClientError = require('../../exceptions/ClientError');
-
 class SongsHandler {
   constructor(service, validator) {
     this._service = service;
@@ -36,7 +32,7 @@ class SongsHandler {
 
     const response = h.response({
       status: 'success',
-      message: 'Song berhasil ditambahkan',
+      message: 'Lagu ditambah',
       data: {
         songId,
       },
@@ -70,23 +66,23 @@ class SongsHandler {
     };
   }
 
-  async putSongByIdHandler(request, h) {
+  async putSongByIdHandler(request) {
     this._validator.validateSongPayload(request.payload);
     const { id } = request.params;
     await this._service.editSongById(id, request.payload);
 
     return {
       status: 'success',
-      message: 'Song berhasil diperbarui',
+      message: 'Lagu diedit',
     };
   }
 
-  async deleteSongByIdHandler(request, h) {
+  async deleteSongByIdHandler(request) {
     const { id } = request.params;
     await this._service.deleteSongById(id);
     return {
       status: 'success',
-      message: 'Lagu berhasil dihapus',
+      message: 'Lagu dihapus',
     };
   }
 }

@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-underscore-dangle */
-const ClientError = require('../../exceptions/ClientError');
-
 class PlaylistSongsHandler {
   constructor(playlistSongsService, playlistsService, validator) {
     this._playlistSongsService = playlistSongsService;
@@ -25,7 +21,7 @@ class PlaylistSongsHandler {
 
     const response = h.response({
       status: 'success',
-      message: 'Lagu berhasil ditambahkan pada playlist',
+      message: 'Lagu ditambah ke playlist',
     });
     response.code(201);
     return response;
@@ -58,7 +54,7 @@ class PlaylistSongsHandler {
 
     return {
       status: 'success',
-      message: 'Lagu berhasil dihapus dari playlist',
+      message: 'Lagu dihapus dari playlist',
     };
   }
 }

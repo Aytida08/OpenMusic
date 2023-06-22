@@ -1,7 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-unused-vars */
-const ClientError = require('../../exceptions/ClientError');
-
 class AlbumsHandler {
   constructor(service, validator) {
     this._service = service;
@@ -21,7 +17,7 @@ class AlbumsHandler {
 
     const response = h.response({
       status: 'success',
-      message: 'Album ditambahkan',
+      message: 'Album ditambah',
       data: {
         albumId,
       },
@@ -59,7 +55,7 @@ class AlbumsHandler {
 
     return {
       status: 'success',
-      message: 'Album diperbarui',
+      message: 'Album diedit',
     };
   }
 

@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 const { Pool } = require('pg');
 const { nanoid } = require('nanoid');
 const InvariantError = require('../../exceptions/InvariantError');
@@ -20,7 +19,7 @@ class AlbumsService {
     const result = await this._pool.query(query);
 
     if (!result.rowCount) {
-      throw new InvariantError('Album gagal ditambahkan');
+      throw new InvariantError('Album gagal ditambah');
     }
 
     return result.rows[0].id;
@@ -40,7 +39,7 @@ class AlbumsService {
     const result = await this._pool.query(query);
 
     if (!result.rowCount) {
-      throw new NotFoundError('Album not found');
+      throw new NotFoundError('Album tidak ada');
     }
 
     return result.rows[0];
@@ -55,7 +54,7 @@ class AlbumsService {
     const result = await this._pool.query(query);
 
     if (!result.rowCount) {
-      throw new NotFoundError('Error editing album');
+      throw new NotFoundError('Gagal ubah album');
     }
   }
 
@@ -68,7 +67,7 @@ class AlbumsService {
     const result = await this._pool.query(query);
 
     if (!result.rowCount) {
-      throw new NotFoundError('Error deleting album');
+      throw new NotFoundError('Gagal hapus album');
     }
   }
 }

@@ -1,5 +1,3 @@
-const ClientError = require('../../exceptions/ClientError');
-
 class UsersHandler {
     constructor(service, validator) {
       this._service = service;
@@ -17,7 +15,7 @@ class UsersHandler {
   
       const response = h.response({
         status: 'success',
-        message: 'User added',
+        message: 'User ditambah',
         data: {
           userId,
         },

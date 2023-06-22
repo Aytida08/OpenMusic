@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 const { Pool } = require('pg');
 const { nanoid } = require('nanoid');
 const InvariantError = require('../../exceptions/InvariantError');
@@ -20,7 +19,7 @@ class PlaylistSongsService {
     const result = await this._pool.query(query);
 
     if (!result.rows.length) {
-      throw new InvariantError('Lagu gagal ditambahkan ke Playlist');
+      throw new InvariantError('Gagal tambah ke Playlist');
     }
   }
 
@@ -43,7 +42,7 @@ class PlaylistSongsService {
 
     const result = await this._pool.query(query);
     if (!result.rows.length) {
-      throw new InvariantError('Lagu gagal dihapus pada Playlist');
+      throw new InvariantError('Gagal hapus lagu di Playlist');
     }
   }
 
@@ -56,7 +55,7 @@ class PlaylistSongsService {
     const result = await this._pool.query(query);
 
     if (!result.rows.length) {
-      throw new NotFoundError('Lagu tidak ditemukan');
+      throw new NotFoundError('Lagu ketemu');
     }
   }
 }
